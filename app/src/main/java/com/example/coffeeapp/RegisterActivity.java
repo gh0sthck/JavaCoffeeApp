@@ -8,6 +8,8 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.SQLException;
+
 public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +18,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         Button enter_button = findViewById(R.id.aRegButtonEnter);
 
+        Database db = new Database();
+
         enter_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -23,8 +27,19 @@ public class RegisterActivity extends AppCompatActivity {
                 EditText name = findViewById(R.id.aRegName);
 
                 if (phone_number != null && name != null) {
-                    Log.i("PHONE", phone_number.getText().toString());
-                    Log.i("NAME", name.getText().toString());
+                    String phone = phone_number.getText().toString();
+                    String username = name.getText().toString();
+                    try {
+                        db.add_user(username, phone);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    } finally {
+                        db.close_connection();
+                    }
+
+                    // to login
+//                     Intent toLoginIntent = new Intent(RegisterActivity.this, ...)
+
                 } else {
                     Log.e("No data required", "please, attempt again");
                 }
