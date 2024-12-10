@@ -3,14 +3,18 @@
 
     <!--    MAIN ACTIVITY    -->
     <string name="app_name">CoffeeApp</string>
-    <string name="gotologin">go to login</string>
-    <string name="gotoreg">go to register</string>
 
     <!--    REGISTER ACTIVITY    -->
-    <string name="a_reg_title">Регистрация</string>
-    <string name="a_reg_enter">Зарегестрироваться</string>
-    <string name="a_reg_phone">Номер телефона</string>
-    <string name="a_reg_phone_ex">Прим.: 83335551122</string>
+    <string name="a_wel_reg">РЕГИСТРАЦИЯ</string>
+    <string name="a_wel_login">ВХОД</string>
+
+    <!--    LOGIN ACTIVITY    -->
+    <string name="a_login_title">вход.</string>
+    <string name="a_login_enter">Далее</string>
+
+    <!--    REGISTER ACTIVITY    -->
+    <string name="a_reg_title">регистрация.</string>
+    <string name="a_reg_enter">Зарегистрироваться</string>
+    <string name="a_reg_phone">Номер</string>
     <string name="a_reg_name">Имя</string>
-    <string name="a_reg_name_ex">Прим.: Алексей</string>
 </resources>

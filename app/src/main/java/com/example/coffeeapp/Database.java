@@ -6,6 +6,7 @@ import android.util.Log;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Database {
@@ -47,15 +48,30 @@ public class Database {
         } catch (SQLException ex) {
             Log.e("SQLException", ex.getMessage());
         }
-
     }
 
-    public void add_user(String name, String phone) throws SQLException {
+    public void add_user(User user) throws SQLException {
         Connection conn = this.get_connection();
         PreparedStatement add_user_st = conn.prepareStatement("INSERT INTO users(name, phone) VALUES (?, ?)");
-        add_user_st.setString(1, name);
-        add_user_st.setString(2, phone);
+        add_user_st.setString(1, user.getName());
+        add_user_st.setString(2, user.getPhone());
         add_user_st.execute();
+    }
+
+    public User get_user(String number) throws SQLException {
+        Connection conn = this.get_connection();
+        PreparedStatement get_user_st = conn.prepareStatement("SELECT * FROM users WHERE phone = ?;");
+        get_user_st.setString(1, number);
+        get_user_st.execute();
+        ResultSet user = get_user_st.getResultSet();
+        if (user.next()) {
+            return new User(
+                    user.getInt(1),
+                    user.getString(2),
+                    user.getString(3)
+                );
+        }
+        return null;
     }
 
 }

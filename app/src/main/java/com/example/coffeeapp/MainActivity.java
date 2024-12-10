@@ -14,14 +14,5 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btn_register = findViewById(R.id.btnGoReg);
-
-        btn_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent register_intent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(register_intent);
-            }
-        });
     }
 }

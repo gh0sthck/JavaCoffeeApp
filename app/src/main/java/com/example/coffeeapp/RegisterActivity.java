@@ -30,7 +30,9 @@ public class RegisterActivity extends AppCompatActivity {
                     String phone = phone_number.getText().toString();
                     String username = name.getText().toString();
                     try {
-                        db.add_user(username, phone);
+                        db.add_user(
+                                new User(-1, username, phone)
+                        );
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     } finally {

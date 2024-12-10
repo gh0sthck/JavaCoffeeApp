@@ -3,70 +3,77 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/gray">
 
     <TextView
         android:id="@+id/aRegTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="572dp"
+        android:fontFamily="@font/montserrat_extrabold"
         android:text="@string/a_reg_title"
+        android:textColor="@color/black"
+        android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/aRegMainTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title"
-        app:layout_constraintBottom_toTopOf="@+id/aRegTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.685" />
+        app:layout_constraintVertical_bias="0.267" />
 
     <Button
         android:id="@+id/aRegButtonEnter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
+        android:fontFamily="@font/montserrat_bold"
+        android:paddingHorizontal="50dp"
         android:text="@string/a_reg_enter"
+        android:textColor="@color/white"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.758" />
+        app:layout_constraintVertical_bias="0.693" />
 
     <EditText
         android:id="@+id/aRegPhone"
         android:layout_width="260dp"
-        android:layout_height="65dp"
-        android:autofillHints="test"
+        android:layout_height="48dp"
+        android:autofillHints="Прим.:83335551122"
+        android:background="@drawable/input"
         android:ems="10"
-        android:hint="@string/a_reg_phone_ex"
+        android:fontFamily="@font/montserrat_bold"
+        android:hint="@string/a_reg_phone"
         android:inputType="phone"
+        android:textAlignment="center"
+        android:textColorHint="@color/dark_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.543"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/aRegName"
+        android:layout_width="260dp"
+        android:layout_height="48dp"
+        android:autofillHints="Прим.: Алексей"
+        android:background="@drawable/input"
+        android:ems="10"
+        android:fontFamily="@font/montserrat_bold"
+        android:hint="@string/a_reg_name"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColorHint="@color/dark_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.569"
-        tools:visibility="visible" />
-
-    <EditText
-        android:id="@+id/aRegName"
-        android:layout_width="257dp"
-        android:layout_height="76dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/a_reg_name_ex"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.413" />
+        app:layout_constraintVertical_bias="0.442" />
 </androidx.constraintlayout.widget.ConstraintLayout>
