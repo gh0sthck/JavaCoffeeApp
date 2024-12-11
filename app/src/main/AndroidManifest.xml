@@ -34,6 +34,12 @@
             android:exported="true"
             android:theme="@style/Theme.CoffeeApp">
         </activity>
+        <activity
+            android:name=".ProductPageActivity"
+            android:exported="true"
+            android:theme="@style/Theme.CoffeeApp">
+
+        </activity>
 
         <activity
             android:name=".WelcomeActivity"

@@ -3,11 +3,14 @@ package com.example.coffeeapp;
 import android.os.StrictMode;
 import android.util.Log;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Database {
     String username = "postgres";
@@ -58,6 +61,26 @@ public class Database {
         add_user_st.execute();
     }
 
+    public List<Coffee> get_coffies() throws SQLException {
+        Connection conn = this.get_connection();
+        PreparedStatement get_coffies_st = conn.prepareStatement("SELECT * FROM coffies;");
+        get_coffies_st.execute();
+        ResultSet coffies = get_coffies_st.getResultSet();
+
+        List<Coffee> result = new ArrayList<>();
+
+        while (coffies.next()) {
+            Coffee current_coffee = new Coffee(
+                    coffies.getInt(1),
+                    coffies.getString(2),
+                    coffies.getInt(3),
+                    coffies.getInt(4)
+                    );
+            result.add(current_coffee);
+        }
+        return result;
+    }
+
     public User get_user(String number) throws SQLException {
         Connection conn = this.get_connection();
         PreparedStatement get_user_st = conn.prepareStatement("SELECT * FROM users WHERE phone = ?;");
@@ -71,6 +94,24 @@ public class Database {
                     user.getString(3)
                 );
         }
+        return null;
+    }
+
+    public Coffee get_coffee(int id) throws SQLException {
+        Connection conn = this.get_connection();
+        PreparedStatement get_coffee_st = conn.prepareStatement("SELECT * FROM coffies WHERE id = ?;");
+        get_coffee_st.setInt(1, id);
+        get_coffee_st.execute();
+        ResultSet coffee = get_coffee_st.getResultSet();
+        if (coffee.next()) {
+            return new Coffee(
+                    coffee.getInt(1),
+                    coffee.getString(2),
+                    coffee.getInt(3),
+                    coffee.getInt(4)
+            );
+        }
+
         return null;
     }
 

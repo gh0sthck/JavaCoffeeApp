@@ -1,5 +1,6 @@
 package com.example.coffeeapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,8 +40,9 @@ public class RegisterActivity extends AppCompatActivity {
                         db.close_connection();
                     }
 
-                    // to login
-//                     Intent toLoginIntent = new Intent(RegisterActivity.this, ...)
+                     // Temporary decision while verification not ready
+                    Intent main_intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    startActivity(main_intent);
 
                 } else {
                     Log.e("No data required", "please, attempt again");

@@ -1,5 +1,6 @@
 package com.example.coffeeapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +29,10 @@ public class LoginActivity extends AppCompatActivity {
                     try {
                         User result = db.get_user(number.getText().toString());
                         Log.i("Result", result.toString());
+                        if (result != null) {  // Temporary decision while verification not ready
+                            Intent main_intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(main_intent);
+                        }
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     } finally {
