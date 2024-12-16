@@ -2,10 +2,11 @@ package com.example.coffeeapp;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.sql.SQLException;
@@ -23,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         List<Coffee> coffies = new ArrayList<>();
         ArrayList<String> titles = new ArrayList<String>();
         ArrayList<Integer> ids = new ArrayList<Integer>();
+
+        Coffee season_product = null;
+
         try {
             coffies = db.get_coffies();
             if (coffies != null) {
@@ -30,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
                     Log.i("Coffee", coffies.get(i).getName());
                     ids.add(coffies.get(i).getId());
                     titles.add(coffies.get(i).getName());
+                    if (coffies.get(i).isSeasonProduct()) {
+                        season_product = coffies.get(i);
+                    }
                 }
             }
 
@@ -45,5 +52,18 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recycler_view = findViewById(R.id.recyclerView);
         recycler_view.setLayoutManager(manager);
         recycler_view.setAdapter(adapter);
+
+        TextView title = findViewById(R.id.aMainSeasonTitle);
+        TextView price = findViewById(R.id.aMainSeasonPrice);
+        ImageView image = findViewById(R.id.aMainSeasonImage);
+
+        if (season_product != null) {
+            title.setText(season_product.getName());
+            price.setText(season_product.getPrice());
+        } else {
+            price.setText("");
+            title.setText("Сезонного продукта пока нет!");
+            image.setImageResource(R.color.gray);
+        }
     }
 }

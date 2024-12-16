@@ -30,6 +30,8 @@ public class Coffee extends Models{
         return this.id;
     }
 
+    public int getPrice() { return this.price; }
+
     public String getName() {
         return this.name;
     }
